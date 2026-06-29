@@ -278,6 +278,11 @@
   @media (max-width:520px){
     .hero h1{font-size:40px; line-height:.95;}
     .hero-sub{font-size:15px;margin-top:24px;}
+    .hero-actions{flex-direction:column;}
+    .hero-actions a{width:100%; justify-content:center;}
+    .hero-eyebrow{font-size:11px;}
+    .hero-corner{display:none;}
+    .card{flex:0 0 85%;}
     .footer-grid{grid-template-columns:1fr;}
     .service-row{flex-direction:column; align-items:flex-start; gap:8px;}
     .service-row .desc{text-align:left;}
@@ -304,7 +309,15 @@
     </ul>
   </nav>
   <a href="#contact" class="nav-cta">Mulai Project</a>
-  <div class="burger"><span></span><span></span><span></span></div>
+  <button
+    class="burger"
+    aria-label="Buka menu"
+    aria-expanded="false"
+    aria-controls="mobileNav">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
   
 <div class="menu-overlay"></div>
@@ -472,11 +485,17 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  document.getElementById('contactForm').addEventListener('submit', function(e){
+  const formMsg = document.getElementById("formMsg");
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
     e.preventDefault();
-    document.getElementById('formMsg').style.display = 'block';
+    formMsg.style.display="none";
+    setTimeout(()=>{
+        formMsg.style.display="block";
+    },100);
     this.reset();
-  });
+
+});
 
   // =====================
   // Mobile Menu
@@ -487,12 +506,17 @@
   const overlay = document.querySelector(".menu-overlay");
 
   burger.addEventListener("click", () => {
-      burger.classList.toggle("active");
-      nav.classList.toggle("active");
-      header.classList.toggle("open");
-      document.body.classList.toggle("menu-open");
-      overlay.classList.toggle("active");
-  });
+
+    burger.classList.toggle("active");
+    nav.classList.toggle("active");
+    header.classList.toggle("open");
+    document.body.classList.toggle("menu-open");
+    overlay.classList.toggle("active");
+
+    const expanded = burger.classList.contains("active");
+    burger.setAttribute("aria-expanded", expanded);
+
+});
 
   // Menutup menu setelah klik salah satu menu
   document.querySelectorAll("#mobileNav a").forEach(link => {
@@ -504,6 +528,7 @@
         header.classList.remove("open");
         document.body.classList.remove("menu-open");
         overlay.classList.remove("active");
+        burger.setAttribute("aria-expanded","false");
 
     });
 
@@ -516,6 +541,8 @@ overlay.addEventListener("click",()=>{
     header.classList.remove("open");
     document.body.classList.remove("menu-open");
     overlay.classList.remove("active");
+    
+    burger.setAttribute("aria-expanded","false");
 
 });
 </script>
