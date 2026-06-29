@@ -52,7 +52,7 @@
   .logo img{height:64px; width:auto; display:block;}
   nav ul{display:flex; gap:34px; list-style:none;}
   nav a{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; position:relative;}
-  nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .25s ease;}
+  nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--gradient);transition:width .25s ease;}
   nav a:hover::after{width:100%;}
   .nav-cta{
     border:1.5px solid var(--ink); padding:9px 18px; border-radius:999px;
@@ -83,7 +83,7 @@
     max-width:1100px;
   }
   .hero h1 .hl{
-    background:var(--red); color:var(--paper);
+    background:var(--gradient); color:var(--paper);
     padding:0 14px; display:inline-block;
     transform:rotate(-1.2deg);
   }
@@ -104,7 +104,7 @@
     font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:0.04em;
     transition:background .25s ease;
   }
-  .btn-secondary:hover{background:var(--red); color:var(--paper);}
+  .btn-secondary:hover{background:var(--ink); color:var(--paper);}
 
   .hero-corner{
     position:absolute; right:36px; bottom:48px;
@@ -123,7 +123,7 @@
     font-family:'Anton',sans-serif; font-size:22px; text-transform:uppercase;
     margin-right:40px;
   }
-  .ticker span.accent{color:var(--gold);}
+  .ticker span.accent{color:var(--ink);}
   @keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
 
   /* ---------- SECTION GENERIC ---------- */
@@ -177,7 +177,7 @@
   .service-row .num{font-family:'JetBrains Mono',monospace; color:#666; font-size:14px; width:50px;}
   .service-row h3{font-family:'Anton',sans-serif; font-size:clamp(24px,3.4vw,40px); text-transform:uppercase; flex:1; padding:0 24px;}
   .service-row .desc{max-width:280px; color:#999; font-size:13.5px; line-height:1.6; text-align:right;}
-  .service-row:hover h3{color:var(--red);}
+  .service-row:hover h3{color:var(--gradient);}
 
   /* ---------- PORTFOLIO ---------- */
   .portfolio{background:var(--paper);}
@@ -352,7 +352,7 @@
 <section class="services" id="services">
   <div class="section-head" data-reveal>
     <div>
-      <span class="section-num mono" style="color:var(--gold)">02 / OUR SERVICES</span>
+      <span class="section-num mono" style="color:var(--gradient)">02 / OUR SERVICES</span>
       <h2 class="display">WHAT<br>WE DO.</h2>
     </div>
     <p>Six core services that can stand alone, or be combined into one complete campaign.</p>
