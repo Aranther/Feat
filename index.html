@@ -46,7 +46,7 @@
     border-bottom:1px solid var(--line);
     padding:14px 36px;
   }
-  .logo img{height:72px; width:auto; display:block;}
+  .logo img{height:48px; width:auto; display:block;}
   nav ul{display:flex; gap:34px; list-style:none;}
   nav a{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; position:relative;}
   nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .25s ease;}
@@ -58,7 +58,7 @@
   }
   .nav-cta:hover{background:var(--ink); color:var(--paper);}
   .burger{display:none; flex-direction:column; gap:5px; cursor:pointer;}
-  .burger span{width:24px; height:2px; background:var(--ink);}
+  .burger span{width:24px; height:2px; background:var(--ink); transition:all .3s ease;}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -255,16 +255,29 @@
   [data-reveal]{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
   [data-reveal].in{opacity:1; transform:translateY(0);}
 
+  nav.active{max-height:100vh; padding:20px 0;}
+  header.open{background:#FBFAF7;}
+  body.menu-open{overflow:hidden;}
+  .menu-overlay{position:fixed; inset:0; background:rgba(0,0,0,.45); opacity:0; visibility:hidden; transition:.3s ease; z-index:90;}
+  .menu-overlay.active{opacity:1; visibility:visible;}
+  .burger.active span:nth-child(1){transform:rotate(45deg) translateY(10px);}
+  .burger.active span:nth-child(2){opacity:0;}
+  .burger.active span:nth-child(3){transform:rotate(-45deg) translateY(-10px);}
+  
   @media (max-width:880px){
-    nav, .nav-cta{display:none;}
+    nav{display:flex; position:fixed; top:90px; left:0; right:0; z-index:110; background:#FBFAF7; justify-content:center; flex-direction:column; max-height:0; overflow:hidden; transition:all .35s ease; border-bottom:1px solid rgba(0,0,0,.1);}
+    nav.active{max-height:100vh; padding:20px 0;}
+    nav ul{flex-direction:column; align-items:center;gap:25px;}
     .burger{display:flex;}
+    .nav-cta{display:none;}
     .about-grid{grid-template-columns:1fr;}
-    .footer-grid{grid-template-columns:1fr 1fr; gap:30px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
     section{padding:90px 22px;}
     .hero{padding:130px 22px 50px;}
-    .hero-corner{position:static; margin-top:50px; text-align:left;}
   }
   @media (max-width:520px){
+    .hero h1{font-size:40px; line-height:.95;}
+    .hero-sub{font-size:15px;margin-top:24px;}
     .footer-grid{grid-template-columns:1fr;}
     .service-row{flex-direction:column; align-items:flex-start; gap:8px;}
     .service-row .desc{text-align:left;}
@@ -282,7 +295,7 @@
   <div class="logo">
     <img src="images/logo.png" alt="Feat Logo">
   </div>
-  <nav>
+  <nav id="mobileNav">
     <ul>
       <li><a href="#about">Tentang</a></li>
       <li><a href="#services">Jasa</a></li>
@@ -293,7 +306,9 @@
   <a href="#contact" class="nav-cta">Mulai Project</a>
   <div class="burger"><span></span><span></span><span></span></div>
 </header>
-
+  
+<div class="menu-overlay"></div>
+  
 <section class="hero">
   <div class="hero-eyebrow"><span class="dot"></span> CREATIVE DIGITAL AGENCY — JAKARTA</div>
   <h1 class="display" data-reveal>KAMI BIKIN BRAND<br>ANDA <span class="hl">SUSAH</span><br>DILUPAKAN.</h1>
@@ -462,6 +477,47 @@
     document.getElementById('formMsg').style.display = 'block';
     this.reset();
   });
+
+  // =====================
+  // Mobile Menu
+  // =====================
+
+  const burger = document.querySelector(".burger");
+  const nav = document.getElementById("mobileNav");
+  const overlay = document.querySelector(".menu-overlay");
+
+  burger.addEventListener("click", () => {
+      burger.classList.toggle("active");
+      nav.classList.toggle("active");
+      header.classList.toggle("open");
+      document.body.classList.toggle("menu-open");
+      overlay.classList.toggle("active");
+  });
+
+  // Menutup menu setelah klik salah satu menu
+  document.querySelectorAll("#mobileNav a").forEach(link => {
+
+    link.addEventListener("click",()=>{
+
+        burger.classList.remove("active");
+        nav.classList.remove("active");
+        header.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        overlay.classList.remove("active");
+
+    });
+
+});
+
+overlay.addEventListener("click",()=>{
+
+    burger.classList.remove("active");
+    nav.classList.remove("active");
+    header.classList.remove("open");
+    document.body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+
+});
 </script>
 
 </body>
