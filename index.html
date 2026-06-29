@@ -45,7 +45,7 @@
     border-bottom:1px solid var(--line);
     padding:14px 36px;
   }
-  .logo img{height:45px; width:auto; display:block;}
+  .logo img{height:64px; width:auto; display:block;}
   nav ul{display:flex; gap:34px; list-style:none;}
   nav a{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; position:relative;}
   nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .25s ease;}
@@ -263,6 +263,13 @@
     .hero{padding:130px 22px 50px;}
     .hero-corner{position:static; margin-top:50px; text-align:left;}
   }
+  /* MOBILE MENU */
+  @media (max-width:880px){
+  nav{position:fixed; top:90px; left:0; right:0; background:#FBFAF7; display:flex; justify-content:center; max-height:0; overflow:hidden; transition:.35s; border-bottom:1px solid rgba(0,0,0,.1);}
+  nav.active{max-height:400px; padding:20px 0;}
+  nav ul{flex-direction:column; align-items:center; gap:25px;}
+  .nav-cta{display:none;}
+  }
   @media (max-width:520px){
     .footer-grid{grid-template-columns:1fr;}
     .service-row{flex-direction:column; align-items:flex-start; gap:8px;}
@@ -281,7 +288,7 @@
   <div class="logo">
     <img src="images/logo.png" alt="Feat Logo">
   </div>
-  <nav>
+  <nav id="mobileNav">
     <ul>
       <li><a href="#about">Tentang</a></li>
       <li><a href="#services">Jasa</a></li>
