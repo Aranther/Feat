@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FEAT — Creative Digital Agency, Jakarta</title>
+<title>OBOR — Creative Digital Agency, Jakarta</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#111114;
@@ -46,7 +45,8 @@
     border-bottom:1px solid var(--line);
     padding:14px 36px;
   }
-  .logo img{height:48px; width:auto; display:block;}
+  .logo{font-family:'Anton',sans-serif; font-size:26px; text-transform:uppercase;}
+  .logo span{color:var(--red);}
   nav ul{display:flex; gap:34px; list-style:none;}
   nav a{font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; position:relative;}
   nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .25s ease;}
@@ -58,7 +58,7 @@
   }
   .nav-cta:hover{background:var(--ink); color:var(--paper);}
   .burger{display:none; flex-direction:column; gap:5px; cursor:pointer;}
-  .burger span{width:24px; height:2px; background:var(--ink); transition:all .3s ease;}
+  .burger span{width:24px; height:2px; background:var(--ink);}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -146,7 +146,7 @@
     position:relative; overflow:hidden; border-radius:6px;
   }
   .about-visual::before{
-    content:'Feat'; position:absolute; inset:0;
+    content:'OBOR'; position:absolute; inset:0;
     font-family:'Anton',sans-serif; font-size:120px; color:rgba(255,255,255,0.12);
     display:flex; align-items:center; justify-content:center; text-align:center;
   }
@@ -255,34 +255,16 @@
   [data-reveal]{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
   [data-reveal].in{opacity:1; transform:translateY(0);}
 
-  nav.active{max-height:100vh; padding:20px 0;}
-  header.open{background:#FBFAF7;}
-  body.menu-open{overflow:hidden;}
-  .menu-overlay{position:fixed; inset:0; background:rgba(0,0,0,.45); opacity:0; visibility:hidden; transition:.3s ease; z-index:90;}
-  .menu-overlay.active{opacity:1; visibility:visible;}
-  .burger.active span:nth-child(1){transform:rotate(45deg) translateY(10px);}
-  .burger.active span:nth-child(2){opacity:0;}
-  .burger.active span:nth-child(3){transform:rotate(-45deg) translateY(-10px);}
-  
   @media (max-width:880px){
-    nav{display:flex; position:fixed; top:90px; left:0; right:0; z-index:110; background:#FBFAF7; justify-content:center; flex-direction:column; max-height:0; overflow:hidden; transition:all .35s ease; border-bottom:1px solid rgba(0,0,0,.1);}
-    nav.active{max-height:100vh; padding:20px 0;}
-    nav ul{flex-direction:column; align-items:center;gap:25px;}
+    nav, .nav-cta{display:none;}
     .burger{display:flex;}
-    .nav-cta{display:none;}
     .about-grid{grid-template-columns:1fr;}
-    .footer-grid{grid-template-columns:1fr 1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:30px;}
     section{padding:90px 22px;}
     .hero{padding:130px 22px 50px;}
+    .hero-corner{position:static; margin-top:50px; text-align:left;}
   }
   @media (max-width:520px){
-    .hero h1{font-size:40px; line-height:.95;}
-    .hero-sub{font-size:15px;margin-top:24px;}
-    .hero-actions{flex-direction:column;}
-    .hero-actions a{width:100%; justify-content:center;}
-    .hero-eyebrow{font-size:11px;}
-    .hero-corner{display:none;}
-    .card{flex:0 0 85%;}
     .footer-grid{grid-template-columns:1fr;}
     .service-row{flex-direction:column; align-items:flex-start; gap:8px;}
     .service-row .desc{text-align:left;}
@@ -297,10 +279,8 @@
 <body>
 
 <header id="siteHeader">
-  <div class="logo">
-    <img src="images/logo.png" alt="Feat Logo">
-  </div>
-  <nav id="mobileNav">
+  <div class="logo">OB<span>O</span>R</div>
+  <nav>
     <ul>
       <li><a href="#about">Tentang</a></li>
       <li><a href="#services">Jasa</a></li>
@@ -309,19 +289,9 @@
     </ul>
   </nav>
   <a href="#contact" class="nav-cta">Mulai Project</a>
-  <button
-    class="burger"
-    aria-label="Buka menu"
-    aria-expanded="false"
-    aria-controls="mobileNav">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <div class="burger"><span></span><span></span><span></span></div>
 </header>
-  
-<div class="menu-overlay"></div>
-  
+
 <section class="hero">
   <div class="hero-eyebrow"><span class="dot"></span> CREATIVE DIGITAL AGENCY — JAKARTA</div>
   <h1 class="display" data-reveal>KAMI BIKIN BRAND<br>ANDA <span class="hl">SUSAH</span><br>DILUPAKAN.</h1>
@@ -365,7 +335,7 @@
       <div class="tag">EST. 2014</div>
     </div>
     <div class="about-text" data-reveal>
-      <p>Feat adalah agency creative digital marketing yang berbasis di Jakarta. Kami percaya kreativitas itu bukan dekorasi — dia harus punya tujuan, terukur, dan berdampak ke bisnis klien.</p>
+      <p>Obor adalah agency creative digital marketing yang berbasis di Jakarta. Kami percaya kreativitas itu bukan dekorasi — dia harus punya tujuan, terukur, dan berdampak ke bisnis klien.</p>
       <p>Dari brand baru yang baru mau lahir, sampai brand besar yang butuh napas segar, kami bantu lewat riset, strategi, desain, dan konten yang dieksekusi rapi dari hari pertama sampai hasil akhir.</p>
       <div class="about-stats">
         <div class="stat"><strong>120+</strong><span>Brand Dibantu</span></div>
@@ -433,7 +403,7 @@
 <section class="contact" id="contact">
   <span class="section-num mono" style="color:var(--gold)">04 / KONTAK</span>
   <h2 class="display">PUNYA PROJECT?<br>NGOBROL DULU.</h2>
-  <a href="mailto:halo@Feat.id" class="contact-email">halo@Feat.id ↗</a>
+  <a href="mailto:halo@obor.id" class="contact-email">halo@obor.id ↗</a>
 
   <form class="contact-form" id="contactForm">
     <input type="text" placeholder="Nama Anda" required>
@@ -464,7 +434,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Feat Creative Agency. Semua hak dilindungi.</span>
+    <span>© 2026 OBOR Creative Agency. Semua hak dilindungi.</span>
     <div class="socials">
       <a href="#about">Tentang</a>
       <a href="#services">Jasa</a>
@@ -485,66 +455,11 @@
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  const formMsg = document.getElementById("formMsg");
-
-document.getElementById("contactForm").addEventListener("submit", function(e){
+  document.getElementById('contactForm').addEventListener('submit', function(e){
     e.preventDefault();
-    formMsg.style.display="none";
-    setTimeout(()=>{
-        formMsg.style.display="block";
-    },100);
+    document.getElementById('formMsg').style.display = 'block';
     this.reset();
-
-});
-
-  // =====================
-  // Mobile Menu
-  // =====================
-
-  const burger = document.querySelector(".burger");
-  const nav = document.getElementById("mobileNav");
-  const overlay = document.querySelector(".menu-overlay");
-
-  burger.addEventListener("click", () => {
-
-    burger.classList.toggle("active");
-    nav.classList.toggle("active");
-    header.classList.toggle("open");
-    document.body.classList.toggle("menu-open");
-    overlay.classList.toggle("active");
-
-    const expanded = burger.classList.contains("active");
-    burger.setAttribute("aria-expanded", expanded);
-
-});
-
-  // Menutup menu setelah klik salah satu menu
-  document.querySelectorAll("#mobileNav a").forEach(link => {
-
-    link.addEventListener("click",()=>{
-
-        burger.classList.remove("active");
-        nav.classList.remove("active");
-        header.classList.remove("open");
-        document.body.classList.remove("menu-open");
-        overlay.classList.remove("active");
-        burger.setAttribute("aria-expanded","false");
-
-    });
-
-});
-
-overlay.addEventListener("click",()=>{
-
-    burger.classList.remove("active");
-    nav.classList.remove("active");
-    header.classList.remove("open");
-    document.body.classList.remove("menu-open");
-    overlay.classList.remove("active");
-    
-    burger.setAttribute("aria-expanded","false");
-
-});
+  });
 </script>
 
 </body>
